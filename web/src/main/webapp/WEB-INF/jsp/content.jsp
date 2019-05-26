@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>User</title>
+    <title>Content</title>
 </head>
 <body>
-    <h1>${requestScope.user.name}, ${requestScope.user.id}</h1>
+    <h1>${requestScope.content}</h1>
 </body>
 </html>
