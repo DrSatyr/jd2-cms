@@ -9,12 +9,16 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
@@ -23,13 +27,16 @@ import java.util.Set;
 
 @Setter
 @Getter
-@Builder
-@ToString(exclude = {"contents", "comments"})
-@EqualsAndHashCode(exclude = {"contents", "comments"})
+@Builder(builderMethodName = "userBuilder")
+@ToString(exclude = "comments")
+@EqualsAndHashCode(exclude = "comments")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "user", schema = "app")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "discriminator")
+@DiscriminatorValue("USER")
 public class User implements BaseEntity<Long> {
 
     @Id
@@ -67,18 +74,9 @@ public class User implements BaseEntity<Long> {
     @Column(name = "surname")
     private String surname;
 
-    @OneToMany(mappedBy = "createdBy")
-    @Builder.Default
-    private Set<Content> contents = new HashSet<>();
-
     @OneToMany(mappedBy = "user")
     @Builder.Default
     private Set<Comment> comments = new HashSet<>();
-
-    public void addContent(Content content) {
-        content.setCreatedBy(this);
-        contents.add(content);
-    }
 
     public void addComment(Comment comment) {
         comment.setUser(this);

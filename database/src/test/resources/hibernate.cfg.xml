@@ -4,6 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+
         <property name="connection.url">jdbc:h2:mem:jd2;INIT=CREATE SCHEMA IF NOT EXISTS app</property>
         <property name="connection.driver_class">org.h2.Driver</property>
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
@@ -12,10 +13,13 @@
         <property name="connection.password"/>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
+
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
 
         <mapping class="by.itacademy.pinchuk.jd2.entity.Tag"/>
         <mapping class="by.itacademy.pinchuk.jd2.entity.User"/>
+        <mapping class="by.itacademy.pinchuk.jd2.entity.Editor"/>
+        <mapping class="by.itacademy.pinchuk.jd2.entity.Administrator"/>
         <mapping class="by.itacademy.pinchuk.jd2.entity.Content"/>
         <mapping class="by.itacademy.pinchuk.jd2.entity.ContentType"/>
         <mapping class="by.itacademy.pinchuk.jd2.entity.Category"/>

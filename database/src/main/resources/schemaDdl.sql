@@ -1,4 +1,4 @@
-CREATE DATABASE jd2;
+-- CREATE DATABASE jd2;
 
 CREATE SCHEMA IF NOT EXISTS app;
 
@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS app.user CASCADE;
 CREATE TABLE app.user
 (
     id            BIGSERIAL PRIMARY KEY,
+    discriminator VARCHAR(100),
     username      VARCHAR(150) NOT NULL UNIQUE,
     email         VARCHAR(100) NOT NULL UNIQUE,
     phone         VARCHAR(13),
@@ -17,7 +18,8 @@ CREATE TABLE app.user
     register_date DATE,
     birth_date    DATE,
     name          VARCHAR(100),
-    surname       VARCHAR(100)
+    surname       VARCHAR(100),
+    additional_info VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS app.tag CASCADE;

@@ -49,11 +49,11 @@ public class ContentTest extends BaseEntityTest {
         Comment comment = TestEntityBuilder.buildComment();
         ContentType contentType = TestEntityBuilder.buildContentType();
         Category category = TestEntityBuilder.buildCategory();
-        User user = TestEntityBuilder.buildUser();
+        Editor editor = TestEntityBuilder.buildEditor();
 
         contentType.addContent(content);
         category.addContent(content);
-        user.addContent(content);
+        editor.addContent(content);
         content.addComment(comment);
         for (Lang lang : Lang.values()) {
             content.addTag(TestEntityBuilder.buildTag(lang));

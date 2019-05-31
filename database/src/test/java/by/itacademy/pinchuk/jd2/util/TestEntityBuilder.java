@@ -1,5 +1,6 @@
 package by.itacademy.pinchuk.jd2.util;
 
+import by.itacademy.pinchuk.jd2.entity.Administrator;
 import by.itacademy.pinchuk.jd2.entity.Category;
 import by.itacademy.pinchuk.jd2.entity.CategoryTranslation;
 import by.itacademy.pinchuk.jd2.entity.Comment;
@@ -7,6 +8,7 @@ import by.itacademy.pinchuk.jd2.entity.CommentStatus;
 import by.itacademy.pinchuk.jd2.entity.Content;
 import by.itacademy.pinchuk.jd2.entity.ContentTranslation;
 import by.itacademy.pinchuk.jd2.entity.ContentType;
+import by.itacademy.pinchuk.jd2.entity.Editor;
 import by.itacademy.pinchuk.jd2.entity.ExtraField;
 import by.itacademy.pinchuk.jd2.entity.ExtraFieldType;
 import by.itacademy.pinchuk.jd2.entity.Lang;
@@ -40,9 +42,40 @@ public class TestEntityBuilder {
     }
 
     public User buildUser() {
-        return User.builder()
-                .username("test")
-                .email("test@email.ru")
+        return User.userBuilder()
+                .username("user")
+                .email("user@email.ru")
+                .phone("+375447949471")
+                .password("testPass")
+                .active(true)
+                .role(UserRole.USER)
+                .registerDate(LocalDateTime.now())
+                .birthDate(LocalDateTime.now())
+                .name("TestUser")
+                .surname("TestUserSurname")
+                .build();
+    }
+
+    public Editor buildEditor() {
+        return Editor.editorBuilder()
+                .username("editor")
+                .email("editor@email.ru")
+                .phone("+375447949471")
+                .password("testPass")
+                .active(true)
+                .role(UserRole.EDITOR)
+                .registerDate(LocalDateTime.now())
+                .birthDate(LocalDateTime.now())
+                .name("TestUser")
+                .surname("TestUserSurname")
+                .additionalInfo("Some additional info")
+                .build();
+    }
+
+    public Administrator buildAdministrator() {
+        return Administrator.administratorBuilder()
+                .username("administrator")
+                .email("administrator@email.ru")
                 .phone("+375447949471")
                 .password("testPass")
                 .active(true)
@@ -51,6 +84,7 @@ public class TestEntityBuilder {
                 .birthDate(LocalDateTime.now())
                 .name("TestUser")
                 .surname("TestUserSurname")
+                .additionalInfo("Some additioanl info")
                 .build();
     }
 
