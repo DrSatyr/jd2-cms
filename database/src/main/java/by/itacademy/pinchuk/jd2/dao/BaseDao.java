@@ -1,8 +1,6 @@
 package by.itacademy.pinchuk.jd2.dao;
 
 import by.itacademy.pinchuk.jd2.entity.BaseEntity;
-import by.itacademy.pinchuk.jd2.util.HibernateHelper;
-import lombok.Cleanup;
 import org.hibernate.Session;
 
 import java.io.Serializable;
@@ -13,35 +11,31 @@ import java.util.Optional;
 
 public interface BaseDao<ID extends Serializable, E extends BaseEntity<ID>> {
 
-    default Optional<E> get(ID id) {
-        @Cleanup Session session = HibernateHelper.getSession();
+    default Optional<E> get(ID id, Session session) {
         E entity = session.find(getClazz(), id);
         return Optional.ofNullable(entity);
     }
 
-    default ID save(E entity) {
-        @Cleanup Session session = HibernateHelper.getSession();
+    default ID save(E entity, Session session) {
         session.beginTransaction();
         Serializable id = session.save(entity);
         session.getTransaction().commit();
         return entity.getId();
     }
 
-    default void update(E entity) {
-        @Cleanup Session session = HibernateHelper.getSession();
+    default void update(E entity, Session session) {
         session.beginTransaction();
         session.update(entity);
         session.getTransaction().commit();
     }
 
-    default void delete(E entity) {
-        @Cleanup Session session = HibernateHelper.getSession();
+    default void delete(E entity, Session session) {
         session.beginTransaction();
         session.delete(entity);
         session.getTransaction().commit();
     }
 
-    default List<E> findAll() {
+    default List<E> findAll(Session session) {
         return Collections.emptyList();
     }
 

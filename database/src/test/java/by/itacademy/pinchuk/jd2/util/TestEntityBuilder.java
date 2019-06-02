@@ -33,7 +33,7 @@ public class TestEntityBuilder {
     public CategoryTranslation buildCategoryTranslation(Lang lang) {
         return CategoryTranslation.builder()
                 .id(CategoryTranslation.ComplexId.builder().lang(lang).build())
-                .name(lang.name() + "_TestName")
+                .title(lang.name() + "_TestName")
                 .introText(lang.name() + "_TestIntroText")
                 .metaTitle(lang.name() + "_TestTitle")
                 .metaDescription(lang.name() + "_TestDescription")
@@ -112,7 +112,7 @@ public class TestEntityBuilder {
     public ContentTranslation buildContentTranslation(Lang lang) {
         return ContentTranslation.builder()
                 .id(ContentTranslation.ComplexId.builder().lang(lang).build())
-                .name("TestContentName")
+                .title("TestContentName")
                 .introText("TestIntroText")
                 .fullText("TestFullText")
                 .metaTitle("TestMetaTitle")

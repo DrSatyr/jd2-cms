@@ -27,8 +27,8 @@ public class ContentTranslation implements BaseEntity<ContentTranslation.Complex
     @EmbeddedId
     private ContentTranslation.ComplexId id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "intro_text")
     private String introText;
