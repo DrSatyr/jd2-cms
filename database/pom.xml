@@ -11,10 +11,10 @@
 
     <artifactId>database</artifactId>
 
-        <properties>
-            <hibernate.version>5.4.2.Final</hibernate.version>
-            <querydsl.version>4.2.1</querydsl.version>
-        </properties>
+    <properties>
+        <hibernate.version>5.4.2.Final</hibernate.version>
+        <querydsl.version>4.2.1</querydsl.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -51,14 +51,41 @@
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
+            <artifactId>querydsl-jpa</artifactId>
             <version>${querydsl.version}</version>
-            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
+            <artifactId>querydsl-apt</artifactId>
             <version>${querydsl.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
