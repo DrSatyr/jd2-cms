@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ContentTranslationDto {
 
-//    private ContentTranslationDto.ComplexIdDto id;
     private Lang lang;
     private String title;
     private String introText;
@@ -20,12 +19,4 @@ public class ContentTranslationDto {
     private String metaTitle;
     private String metaDescription;
     private String metaKeywords;
-
-//    @Data
-//    @Builder
-//    public static class ComplexIdDto implements Serializable {
-//
-//        private ContentDto content;
-//        private Lang lang;
-//    }
 }

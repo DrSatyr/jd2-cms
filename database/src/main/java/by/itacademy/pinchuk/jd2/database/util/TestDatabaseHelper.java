@@ -18,8 +18,8 @@ import javax.persistence.EntityManagerFactory;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class TestDatabaseHelper {
 
-    ContentRepository contentRepository;
-    EntityManagerFactory entityManagerFactory;
+    private final ContentRepository contentRepository;
+    private final EntityManagerFactory entityManagerFactory;
 
     public void fill(int count) {
         Content content;

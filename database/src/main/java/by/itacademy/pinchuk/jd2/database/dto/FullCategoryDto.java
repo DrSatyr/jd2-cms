@@ -17,10 +17,10 @@ import java.util.Set;
 @NoArgsConstructor
 public class FullCategoryDto implements BaseDto<Long> {
 
-    public Long id;
-    public FullCategoryDto parentCategory;
+    private Long id;
+    private FullCategoryDto parentCategory;
     @Builder.Default
-    public Set<FullCategoryDto> childCategories = new HashSet<>();
+    private Set<FullCategoryDto> childCategories = new HashSet<>();
     private String alias;
     private String created;
     private Boolean active;

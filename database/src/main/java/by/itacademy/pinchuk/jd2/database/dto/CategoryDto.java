@@ -15,7 +15,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class CategoryDto implements BaseDto<Long> {
 
-    public Long id;
+    private Long id;
     private String alias;
     private String created;
     private Boolean active;
