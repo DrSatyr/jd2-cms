@@ -12,18 +12,18 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="by.itacademy.pinchuk.jd2.entity.Tag"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.User"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.Editor"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.Administrator"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.Content"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.ContentType"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.Category"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.CategoryTranslation"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.Comment"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.ExtraField"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.ExtraFieldType"/>
-        <mapping class="by.itacademy.pinchuk.jd2.entity.ContentTranslation"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.Tag"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.User"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.Editor"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.Administrator"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.Content"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.ContentType"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.Category"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.CategoryTranslation"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.Comment"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.ExtraField"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.ExtraFieldType"/>
+        <mapping class="by.itacademy.pinchuk.jd2.database.entity.ContentTranslation"/>
 
     </session-factory>
 </hibernate-configuration>

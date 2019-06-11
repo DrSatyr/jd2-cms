@@ -45,7 +45,7 @@ CREATE TABLE app.category_translation
 (
     category_id      BIGINT REFERENCES app.category (id) ON DELETE CASCADE,
     lang             VARCHAR(2),
-    name             VARCHAR(255) NOT NULL,
+    title             VARCHAR(255) NOT NULL,
     intro_text       TEXT,
     meta_title       VARCHAR(255),
     meta_description VARCHAR(255),
@@ -101,7 +101,7 @@ CREATE TABLE app.content_translation
 (
     content_id       BIGINT       NOT NULL REFERENCES app.content (id) ON DELETE CASCADE,
     lang             VARCHAR(2)   NOT NULL,
-    name             VARCHAR(255) NOT NULL,
+    title             VARCHAR(255) NOT NULL,
     intro_text       TEXT,
     full_text        TEXT,
     meta_title       VARCHAR(255),
