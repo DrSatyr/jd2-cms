@@ -2,6 +2,7 @@ package by.itacademy.pinchuk.jd2.database.repository;
 
 import by.itacademy.pinchuk.jd2.database.BaseTest;
 import by.itacademy.pinchuk.jd2.database.entity.Content;
+import by.itacademy.pinchuk.jd2.database.entity.Lang;
 import by.itacademy.pinchuk.jd2.database.util.DslPredicateBuilder;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class ContentRepositoryTest extends BaseTest {
     public void checkFindAllWithPredicate() {
         Iterable<Content> contents = contentRepository.findAll(
                 new DslPredicateBuilder()
-                        .containsIgnoreCase(content.translations.any().title, "Test")
+                        .containsIgnoreCase(content.translations.get(Lang.ru_RU).title, "Test")
                         .build()
         );
         assertThat(contents, Matchers.iterableWithSize(10));

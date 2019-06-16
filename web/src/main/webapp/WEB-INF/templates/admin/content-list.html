@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="fixed" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="admin/chunks/head::head"></head>
+<body>
+<section class="body">
+
+    <th:block th:insert="admin/chunks/header::header"></th:block>
+
+    <div class="inner-wrapper">
+
+        <th:block th:insert="admin/chunks/sidebar-left::sidebar"></th:block>
+
+        <section role="main" class="content-body">
+
+            <th:block th:insert="admin/chunks/content-header::header"></th:block>
+
+            <!-- start: page -->
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <section class="card">
+                        <header class="card-header">
+                            <div class="card-actions">
+                                <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
+                                <a href="#" class="card-action card-action-dismiss" data-card-dismiss=""></a>
+                            </div>
+                            <h2 class="card-title">Filter and navigation</h2>
+                        </header>
+                        <div class="card-body">
+
+                            <form class="form-inline" action="" th:action="@{/admin/content}" method="post">
+                                <label for="limit">Limit: </label>
+                                <select type="text" name="limit" class="form-control mb-2 mr-sm-2 mb-sm-0" id="limit">
+                                    <option>10</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                </select>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <header class="card-header">
+                            <div class="card-actions">
+                                <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                                <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+                            </div>
+
+                            <h2 class="card-title" th:text="${#locale}">Contents</h2>
+                        </header>
+
+                        <div class="card-body">
+                            <table class="table table-responsive-md mb-0">
+                                <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Title</th>
+                                    <th>Created By</th>
+                                    <th>Active</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="content : ${contents}">
+                                <tr th:object="${content.translations.get(#locale.toString())}">
+                                    <td><a th:href="@{content/{id}(id=${content.id})}" th:text="${content.id}">Id</a></td>
+                                    <td><a th:href="@{content/{id}(id=${content.id})}" th:text="*{title}">Title</a></td>
+                                    <td><a th:href="@{user/{id}(id=${content.createdBy.id})}" th:text="${content.createdBy.name}">Mark</a></td>
+                                    <td th:text="${content.active}"></td>
+                                    <td class="actions">
+                                        <a href=""><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="" class="delete-row"><i class="far fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="dataTables_paginate paging_simple_numbers" id="datatable-editable_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled" id="datatable-editable_previous">
+                                        <a href="#" aria-controls="datatable-editable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                    </li>
+                                    <li class="paginate_button page-item active" th:each="i : ${#numbers.sequence(1, pageCount)}">
+                                        <a th:href="@{content(page=${i})}" href="#" aria-controls="datatable-editable" th:data-dt-idx="${i}" data-dt-idx="1" tabindex="0" class="page-link" th:text="${i}">1</a>
+                                    </li>
+                                    <li class="paginate_button page-item next" id="datatable-editable_next">
+                                        <a aria-controls="datatable-editable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- end: page -->
+
+        </section>
+    </div>
+
+    <th:block th:insert="admin/chunks/sidebar-right::sidebar"></th:block>
+
+</section>
+
+<th:block th:insert="admin/chunks/scripts::scripts"></th:block>
+
+</body>
+</html>

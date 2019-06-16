@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
@@ -91,8 +92,9 @@ public class Content implements BaseEntity<Long> {
     private Set<Comment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "id.content", cascade = CascadeType.ALL)
+    @MapKey(name = "id.lang")
     @Builder.Default
-    private Set<ContentTranslation> translations = new HashSet<>();
+    private Map<Lang, ContentTranslation> translations = new HashMap<>();
 
     public void addTag(Tag tag) {
         tag.getContents().add(this);
@@ -106,12 +108,11 @@ public class Content implements BaseEntity<Long> {
 
     public void addTranslation(ContentTranslation translation) {
         translation.getId().setContent(this);
-        translations.add(translation);
+        translations.put(translation.getId().getLang(), translation);
     }
 
     /**
      * Convert row JSON from database to Map collection.
-     *
      */
     // TODO: 2019-05-22 just get it work!
     public Map<String, String> fetchExtraFields() {

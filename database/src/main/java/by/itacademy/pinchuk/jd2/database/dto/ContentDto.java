@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @Builder
@@ -27,5 +27,5 @@ public class ContentDto implements BaseDto<Long> {
     private Boolean active;
     private String extraFields;
     @Builder.Default
-    private Set<ContentTranslationDto> translations = new HashSet<>();
+    private Map<String, ContentTranslationDto> translations = new HashMap<>();
 }

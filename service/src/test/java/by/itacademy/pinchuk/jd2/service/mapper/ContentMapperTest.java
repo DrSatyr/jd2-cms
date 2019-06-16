@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
@@ -31,32 +32,32 @@ public class ContentMapperTest extends BaseTest {
         assertNotNull(contentDto.getCreatedBy());
         assertNotNull(contentDto.getCategory());
         assertNotNull(contentDto.getContentType());
-        assertThat(contentDto.getTranslations(), hasSize(3));
+        assertThat(contentDto.getTranslations().size(), is(2));
 
         FullContentDto fullContentDto = contentMapper.toFullContentDto(content);
         assertNotNull(fullContentDto);
         assertNotNull(fullContentDto.getCreatedBy());
         assertNotNull(fullContentDto.getCategory());
         assertNotNull(fullContentDto.getContentType());
-        assertThat(fullContentDto.getTranslations(), hasSize(3));
+        assertThat(fullContentDto.getTranslations().size(), is(2));
         assertThat(fullContentDto.getComments(), hasSize(1));
-        assertThat(fullContentDto.getTags(), hasSize(3));
+        assertThat(fullContentDto.getTags(), hasSize(2));
 
         Content contentFromDto = contentMapper.fromContentDto(contentDto);
         assertNotNull(contentFromDto);
         assertNotNull(contentFromDto.getCreated());
         assertNotNull(contentFromDto.getCategory());
         assertNotNull(contentFromDto.getContentType());
-        assertThat(contentFromDto.getTranslations(), hasSize(3));
+        assertThat(contentFromDto.getTranslations().size(), is(2));
 
         Content contentFromFullDto = contentMapper.fromFullContentDto(fullContentDto);
         assertNotNull(contentFromFullDto);
         assertNotNull(contentFromFullDto.getCreated());
         assertNotNull(contentFromFullDto.getCategory());
         assertNotNull(contentFromFullDto.getContentType());
-        assertThat(contentFromFullDto.getTranslations(), hasSize(3));
+        assertThat(contentFromFullDto.getTranslations().size(), is(2));
         assertThat(contentFromFullDto.getComments(), hasSize(1));
-        assertThat(contentFromFullDto.getTags(), hasSize(3));
+        assertThat(contentFromFullDto.getTags(), hasSize(2));
     }
 
     private Content BuildContentWithDependencies() {

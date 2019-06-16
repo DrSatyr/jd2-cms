@@ -1,12 +1,15 @@
 package by.itacademy.pinchuk.jd2.database.dto;
 
+import by.itacademy.pinchuk.jd2.database.entity.Lang;
 import by.itacademy.pinchuk.jd2.database.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Data
@@ -32,5 +35,5 @@ public class FullContentDto implements BaseDto<Long> {
     @Builder.Default
     private Set<CommentDto> comments = new HashSet<>();
     @Builder.Default
-    private Set<ContentTranslationDto> translations = new HashSet<>();
+    private Map<Lang, ContentTranslationDto> translations = new HashMap<>();
 }

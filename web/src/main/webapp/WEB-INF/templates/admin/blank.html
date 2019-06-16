@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="fixed" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="admin/chunks/head::head"></head>
+<body>
+<section class="body">
+
+    <th:block th:insert="admin/chunks/header::header"></th:block>
+
+    <div class="inner-wrapper">
+
+        <th:block th:insert="admin/chunks/sidebar-left::sidebar"></th:block>
+
+        <section role="main" class="content-body">
+
+            <th:block th:insert="admin/chunks/content-header::header"></th:block>
+
+            <!-- start: page -->
+
+            <!-- end: page -->
+
+        </section>
+    </div>
+
+    <th:block th:insert="admin/chunks/sidebar-right::sidebar"></th:block>
+
+</section>
+
+<th:block th:insert="admin/chunks/scripts::scripts"></th:block>
+
+</body>
+</html>

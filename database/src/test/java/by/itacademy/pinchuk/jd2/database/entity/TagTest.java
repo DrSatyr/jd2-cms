@@ -15,7 +15,7 @@ public class TagTest extends BaseEntityTest {
 
         @Cleanup Session session = HibernateHelper.getSession();
         session.beginTransaction();
-        Tag tag = TestEntityBuilder.buildTag(Lang.EN);
+        Tag tag = TestEntityBuilder.buildTag(Lang.en_US);
         session.persist(tag);
         session.getTransaction().commit();
         assertNotNull(tag.getId());
@@ -25,7 +25,7 @@ public class TagTest extends BaseEntityTest {
     public void checkFind() {
         @Cleanup Session session = HibernateHelper.getSession();
         session.beginTransaction();
-        Tag tag = TestEntityBuilder.buildTag(Lang.EN);
+        Tag tag = TestEntityBuilder.buildTag(Lang.en_US);
         session.persist(tag);
         session.clear();
         Tag savedTag = session.get(Tag.class, tag.getId());
