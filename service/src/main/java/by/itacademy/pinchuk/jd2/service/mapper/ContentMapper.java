@@ -36,7 +36,7 @@ public interface ContentMapper {
 
     Content fromFullContentDto(FullContentDto dto);
 
-    Map<Lang, ContentTranslationDto> toTranslationsDto(Map<Lang, ContentTranslation> translations);
+    Map<String, ContentTranslationDto> toTranslationsDto(Map<Lang, ContentTranslation> translations);
 
     List<CommentDto> toCommentsDto(List<Comment> comments);
 
@@ -48,7 +48,7 @@ public interface ContentMapper {
     default ContentTranslation fromContentTranslationDto(ContentTranslationDto dto) {
         return ContentTranslation.builder()
                 .id(ContentTranslation.ComplexId.builder()
-                        .lang(dto.getLang())
+                        .lang(Lang.valueOf(dto.getLang()))
                         .build())
                 .title(dto.getTitle())
                 .introText(dto.getIntroText())
